@@ -4878,6 +4878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef52c2403a062846ab47a0a48a16ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionFlash: {fileID: 919132149155446097, guid: 87b1925b20a46d145ba7c727e9f93fc3,
+  collisionFlash: {fileID: 6145135010310999906, guid: ceb2f4af5b7563244a7b67ad473429bc,
     type: 3}
   rb: {fileID: 0}

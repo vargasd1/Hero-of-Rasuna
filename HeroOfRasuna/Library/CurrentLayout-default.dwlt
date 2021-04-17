@@ -447,9 +447,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1a340000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 14fbffffe8340000f0340000
+      m_ExpandedIDs: 14fbfffff0340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -509,9 +509,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.493184, y: -0.57145363, z: -4.382347}
+    m_Target: {x: -8.126407, y: 0.608541, z: -3.8489354}
     speed: 2
-    m_Value: {x: 0.493184, y: -0.57145363, z: -4.382347}
+    m_Value: {x: -8.126407, y: 0.608541, z: -3.8489354}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -557,13 +557,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.011848699, y: 0.9843252, z: -0.16026212, w: 0.072770745}
+    m_Target: {x: 0.066506915, y: 0.7797468, z: -0.08406588, w: 0.6168638}
     speed: 2
-    m_Value: {x: 0.011848604, y: 0.9843173, z: -0.16026084, w: 0.07277016}
+    m_Value: {x: 0.06650638, y: 0.77974045, z: -0.0840652, w: 0.6168588}
   m_Size:
-    m_Target: 19.072634
+    m_Target: 77.335686
     speed: 2
-    m_Value: 19.072634
+    m_Value: 74.00544
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -717,19 +717,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Magic
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Magic
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Seminar\Hero-of-Rasuna\HeroOfRasuna
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5c360000
-    m_LastClickedID: 13916
+    m_SelectedIDs: 68360000
+    m_LastClickedID: 13928
     m_ExpandedIDs: 000000005036000052360000543600005a36000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -786,7 +786,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300008cf6ffff6c53000000000000d270020024510000c28f0200ea770000
+    m_ExpandedInstanceIDs: c62300008cf6ffff6c530000d270020024510000c28f0200ea77000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
