@@ -70,7 +70,7 @@ public class CameraFollow : MonoBehaviour
         Transform target = CameraFollowObject.transform;
 
         //Moves the camera around the object based on speed (step)
-        float step = cameraMoveSpeed * Time.deltaTime;
+        float step = cameraMoveSpeed * Time.fixedUnscaledDeltaTime;// Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
 }

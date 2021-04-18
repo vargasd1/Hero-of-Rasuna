@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterMovementIsometric : MonoBehaviour
 {
@@ -14,15 +15,24 @@ public class CharacterMovementIsometric : MonoBehaviour
     private Vector3 northSouthDir, eastWestDir, playerVelocity;
     private Vector3 move;
 
+    //variables for overclock
+    public GameObject overlay;
+    public Image overclockCD;
+    float slowdownFactor = .05f;
+    float overclockTime = 5f;
+    float overclockTransitionTime = 2f;
+    float overclockCDTime = 10f;
+    public static bool overclock = false;
+    public static bool overclockTransition = false;
+
     private void Start()
     {
         //////////////////////////////////////////////////////////// Get Character Controller Off the Player
         controller = gameObject.GetComponent<CharacterController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-
         //////////////////////////////////////////////////////////// Player Grounded & Speed
         groundedPlayer = controller.isGrounded;
 
@@ -79,6 +89,21 @@ public class CharacterMovementIsometric : MonoBehaviour
             move = Vector3.zero;
         }
 
+        //activate overclock
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!overclock && overclockCDTime <= 0f) SlowTime();
+        }
+
+        //display time
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("Fixed Delta Time: " + Time.fixedDeltaTime + "\nFixed Unscaled Delta Time: " + Time.fixedUnscaledDeltaTime);
+        }
+
+
+
+
         //////////////////////////////////////////////////////////// Player Movement Y
         /*if (Input.GetButtonDown("Jump") && jumpCount < 2)
         {
@@ -94,11 +119,73 @@ public class CharacterMovementIsometric : MonoBehaviour
             }
             jumpCount++;
         }*/
+    }//Update()
 
+
+
+    void FixedUpdate()
+    {
         //////////////////////////////////////////////////////////// Final Movement
         if (playerVelocity.y >= 15) playerVelocity.y = 15;
-        playerVelocity.y += (gravityValue * Time.fixedDeltaTime);
+        playerVelocity.y += (gravityValue * Time.fixedUnscaledDeltaTime);
         Vector3 finalMovementVector = new Vector3(move.x * playerSpeed, playerVelocity.y, move.z * playerSpeed);
-        controller.Move(finalMovementVector * Time.fixedDeltaTime);
-    }
+        controller.Move(finalMovementVector * Time.fixedUnscaledDeltaTime);
+
+        //decrement overclock time
+        if(overclock)
+        {
+            Debug.Log("Overclock");
+            overclockTime -= Time.fixedUnscaledDeltaTime;
+            if(overclockTime <= 0f)
+            {
+                //start transitioning back
+                overclockTransition = true;
+                overclock = false;
+                overclockTime = 5f;
+            }
+        }
+        //transition the time back to normal
+        else if(overclockTransition)
+        {
+            Debug.Log("Overclock Transition");
+            overclockTransitionTime -= Time.fixedUnscaledDeltaTime;
+            //slowly return back to normal time. increase pitches of sounds as time goes back
+            Time.timeScale += (1f / overclockTransitionTime) * Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);//prevents timeScale from going above 1/below 0
+            Time.fixedDeltaTime = Time.timeScale * .02f;
+
+            if (overclockTransitionTime <= 1f)
+            {
+                //set everything back to normal time
+                Debug.Log("Overclock off");
+                overclockTransition = false;
+                overclockTransitionTime = 2f;
+                Time.timeScale = 1f;
+                Time.fixedDeltaTime = Time.timeScale * .02f;
+                overlay.SetActive(false);
+            }
+        }
+        else
+        {
+            //only edit the cooldown shadows/effects for OVERCLOCK SPECIFICALLY here when not actively using overclock
+            overclockCDTime -= Time.fixedUnscaledDeltaTime;
+            if (overclockCDTime < 0f) overclockCDTime = 0f;
+            overclockCD.rectTransform.sizeDelta = new Vector2(70, Mathf.Lerp(0, 70, overclockCDTime/10f));
+        }
+    }//FixedUpdate()
+
+
+
+    public void SlowTime()
+    {
+        //slow down time
+        overclockTime = 5f;
+        Time.timeScale = slowdownFactor;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+        overclock = true;
+        overlay.SetActive(true);
+        overclockCDTime = 10f;
+
+        //slowing down decrease pitches of sounds - adjust for later
+    }//SlowTime()
 }
