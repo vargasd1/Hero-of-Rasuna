@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\CharacterMovementIsometric.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\MeshDestroy.cs" />
+    <Compile Include="Assets\Scripts\PlayerAbilities.cs" />
     <Compile Include="Assets\Tutorial_Info\Scripts\Readme.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

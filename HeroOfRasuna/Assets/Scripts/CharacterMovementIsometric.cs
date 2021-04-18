@@ -25,6 +25,10 @@ public class CharacterMovementIsometric : MonoBehaviour
     public static bool overclock = false;
     public static bool overclockTransition = false;
 
+    //player variables - consider moving things about the player that aren't movement to their own script, e.g. PlayerInfo
+    public float health = 20f;
+    public float maxHealth = 50f;
+
     private void Start()
     {
         //////////////////////////////////////////////////////////// Get Character Controller Off the Player
