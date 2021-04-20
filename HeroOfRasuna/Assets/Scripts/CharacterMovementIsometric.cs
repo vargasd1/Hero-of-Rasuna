@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CharacterMovementIsometric : MonoBehaviour
 {
     private CharacterController controller;
+    private MeleeManager meleeManager;
 
     private bool groundedPlayer;
     private bool doOnce = true;
@@ -35,6 +36,7 @@ public class CharacterMovementIsometric : MonoBehaviour
     {
         //////////////////////////////////////////////////////////// Get Character Controller Off the Player
         controller = gameObject.GetComponent<CharacterController>();
+        meleeManager = gameObject.GetComponent<MeleeManager>();
     }
 
     void Update()
@@ -118,7 +120,11 @@ public class CharacterMovementIsometric : MonoBehaviour
             Debug.Log("Fixed Delta Time: " + Time.fixedDeltaTime + "\nFixed Unscaled Delta Time: " + Time.fixedUnscaledDeltaTime);
         }
 
+        // swing attack
+        if (Input.GetKeyDown(KeyCode.Mouse0)){
+            meleeManager.startAttack = true;
 
+        }
 
 
         //////////////////////////////////////////////////////////// Player Movement Y

@@ -19,11 +19,6 @@ public class Spawner : MonoBehaviour
             Rigidbody rb = lightBlast.GetComponent<Rigidbody>();
             rb.velocity = transform.forward * 20;
             //lightBlast.transform.parent = null;
-
-
-
-
-
         }
     }
 }
